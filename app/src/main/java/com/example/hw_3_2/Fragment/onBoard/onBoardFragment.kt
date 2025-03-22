@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.viewpager2.widget.ViewPager2
 import com.example.hw_3_2.R
 import com.example.hw_3_2.adapter.onBoardPageApdapter
 import com.example.hw_3_2.databinding.FragmentOnBoardBinding
@@ -27,24 +28,43 @@ private var onBoardPageApdapter:onBoardPageApdapter?=null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         initialize()
+        setupListener()
+        changeActiveOnboardShower(0)
     }
 
     private fun initialize() {
-       val onBoardPageApdapter=onBoardPageApdapter(this@onBoardFragment,generateOnBoardPages())
-        binding.viewPager.adapter=onBoardPageApdapter
+        binding.viewpanger2.adapter = onBoardPageApdapter(this)
     }
-    private fun generateOnBoardPages() : ArrayList<onBoardModel> = arrayListOf(
-        onBoardModel(
-            "Удобство",
-            "Создавайте заметки в два клика! Записывайте мысли, идеи и важные задачи мгновенно."
-        ),
-        onBoardModel(
-            "Организация",
-            "Организуйте заметки по папкам и тегам. Легко находите нужную информацию в любое время."
-        ),
-        onBoardModel(
-            "Синхронизация",
-            "Синхронизация на всех устройствах. Доступ к записям в любое время и в любом месте."
-        )
-    )
+
+    private fun setupListener() = with(binding.viewpanger2) {
+        registerOnPageChangeCallback(object : ViewPager2.OnPageChangeCallback() {
+            override fun onPageSelected(position: Int) {
+                super.onPageSelected(position)
+                if (position == 2) {
+                    binding.btnStart.visibility = View.VISIBLE
+                    binding.txtSkip.visibility = View.GONE
+                } else {
+                    binding.btnStart.visibility = View.GONE
+                    binding.txtSkip.visibility = View.VISIBLE
+                    binding.txtSkip.setOnClickListener {
+                        if (currentItem < 3) {
+                            setCurrentItem(currentItem + 2, true)
+                        }
+                    }
+                }
+            }
+        })
+    }
+
+    private fun changeActiveOnboardShower(position : Int) {
+        val onboardShowers = binding.onboardShowers
+        for (i in 0 until onboardShowers.childCount) {
+            val onboardShower = onboardShowers.getChildAt(i)
+            if (i == position) {
+                onboardShower.setBackgroundResource(R.drawable.ic_ellipse)
+            } else {
+                onboardShower.setBackgroundResource(R.drawable.ic_elipse)
+            }
+        }
+    }
 }

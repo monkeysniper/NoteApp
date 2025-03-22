@@ -1,32 +1,73 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="#252525"
     android:orientation="vertical"
     tools:context=".Fragment.onBoard.onBoardFragment">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="right"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:text="Пропустить"
-        android:textSize="15sp" />
-
-    <TextView
+    <LinearLayout
+        android:id="@+id/onboardShowers"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center_horizontal"
-        android:text="Note"
-        android:textSize="24sp" />
+        app:layout_constraintBottom_toTopOf="@id/btn_start"
+        android:layout_marginBottom="50dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+
+        android:layout_marginTop="24dp">
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="11dp"
+            android:background="@drawable/ic_ellipse" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="11dp"
+            android:layout_marginHorizontal="6dp"
+            android:background="@drawable/ic_elipse" />
+
+        <View
+            android:layout_width="12dp"
+            android:layout_height="10dp"
+            android:background="@drawable/ic_elipse" />
+    </LinearLayout>
+
 
     <androidx.viewpager2.widget.ViewPager2
-        android:id="@+id/viewPager"
+        android:id="@+id/viewpanger2"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
-        android:layout_marginTop="32dp" />
+        android:layout_height="match_parent"/>
 
-</LinearLayout>
+    <TextView
+        android:id="@+id/txt_skip"
+        android:layout_width="93dp"
+        android:layout_height="23dp"
+        android:textStyle="bold"
+        android:textSize="16sp"
+        android:textColor="#D88B02"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:text="Пропустить"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btn_start"
+        android:layout_width="230dp"
+        android:layout_height="58dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
+        android:background="@drawable/button_background"
+        android:text="Начать"
+        android:textColor="@color/white"
+        android:backgroundTint="@null"
+        android:textSize="20sp"
+        android:layout_marginBottom="72dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

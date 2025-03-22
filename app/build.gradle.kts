@@ -39,6 +39,8 @@ android {
 }
 
 dependencies {
+
+    implementation(libs.lottie)
     val nav_version = "2.8.9"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
     implementation("androidx.navigation:navigation-ui:$nav_version")
