@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="#252525"
     android:orientation="vertical"
-    tools:context=".Fragment.onBoard.onBoardFragment">
+    tools:context=".fragment.onBoard.onBoardFragment">
 
     <LinearLayout
         android:id="@+id/onboardShowers"

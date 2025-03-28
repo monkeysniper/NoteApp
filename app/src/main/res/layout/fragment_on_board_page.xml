@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:gravity="center"
     android:background=" #252525"
-    tools:context=".Fragment.onBoard.onBoardPageFragment">
+    tools:context=".fragment.onBoard.onBoardPageFragment">
 
     <TextView
         android:id="@+id/txt_notes"

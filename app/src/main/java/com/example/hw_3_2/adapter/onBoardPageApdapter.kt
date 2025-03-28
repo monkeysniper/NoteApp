@@ -3,7 +3,7 @@ package com.example.hw_3_2.adapter
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import androidx.viewpager2.adapter.FragmentStateAdapter
-import com.example.hw_3_2.Fragment.onBoard.onBoardPageFragment
+import com.example.hw_3_2.fragment.onBoard.onBoardPageFragment
 
 class onBoardPageApdapter(
     fragment:Fragment,
@@ -12,11 +12,11 @@ class onBoardPageApdapter(
     override fun createFragment(position: Int): Fragment = onBoardPageFragment().apply {
         val bundle = Bundle()
         arguments = bundle
-        bundle.putSerializable(onBoardPageFragment.ARG_ONBOARD_POSITION, position)
+        bundle.putInt(onBoardPageFragment.ARG_ONBOARD_POSITION, position)
     }
 
 
-    override fun getItemCount(): Int =3
+    override fun getItemCount(): Int = 3
 
 }
 

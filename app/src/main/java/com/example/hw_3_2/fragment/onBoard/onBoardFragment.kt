@@ -1,4 +1,4 @@
-package com.example.hw_3_2.Fragment.onBoard
+package com.example.hw_3_2.fragment.onBoard
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -6,22 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.viewpager2.widget.ViewPager2
-import com.example.hw_3_2.R
 import com.example.hw_3_2.adapter.onBoardPageApdapter
 import com.example.hw_3_2.databinding.FragmentOnBoardBinding
-import com.example.hw_3_2.models.onBoardModel
 
 
 class onBoardFragment : Fragment() {
-    private lateinit var binding:FragmentOnBoardBinding
+    private lateinit var binding: FragmentOnBoardBinding
 
-private var onBoardPageApdapter:onBoardPageApdapter?=null
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
-        binding = FragmentOnBoardBinding. inflate(inflater, container, false)
+    ): View {
+        binding = FragmentOnBoardBinding.inflate(inflater, container, false)
         return binding.root
     }
 
@@ -29,7 +26,6 @@ private var onBoardPageApdapter:onBoardPageApdapter?=null
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setupListener()
-        changeActiveOnboardShower(0)
     }
 
     private fun initialize() {
@@ -54,17 +50,5 @@ private var onBoardPageApdapter:onBoardPageApdapter?=null
                 }
             }
         })
-    }
-
-    private fun changeActiveOnboardShower(position : Int) {
-        val onboardShowers = binding.onboardShowers
-        for (i in 0 until onboardShowers.childCount) {
-            val onboardShower = onboardShowers.getChildAt(i)
-            if (i == position) {
-                onboardShower.setBackgroundResource(R.drawable.ic_ellipse)
-            } else {
-                onboardShower.setBackgroundResource(R.drawable.ic_elipse)
-            }
-        }
     }
 }
