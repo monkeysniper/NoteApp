@@ -7,13 +7,13 @@
     android:background="#252525"
     tools:context=".fragment.mainFragment">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="19.71dp"
-        android:layout_marginBottom="16.94dp"
-        android:src="@drawable/ic_menu" />
+<!--    <ImageView-->
+<!--        android:layout_width="wrap_content"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:layout_marginStart="20dp"-->
+<!--        android:layout_marginTop="19.71dp"-->
+<!--        android:layout_marginBottom="16.94dp"-->
+<!--        android:src="@drawable/ic_menu" />-->
 
     <TextView
         android:layout_width="104dp"
