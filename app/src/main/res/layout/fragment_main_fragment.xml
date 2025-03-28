@@ -15,15 +15,6 @@
         android:layout_marginBottom="16.94dp"
         android:src="@drawable/ic_menu" />
 
-    <TextView
-        android:layout_width="104dp"
-        android:layout_height="200dp"
-        android:layout_gravity="center"
-        android:layout_marginBottom="250dp"
-        android:text="Все заметки"
-        android:textColor="@color/white"
-        android:textSize="16sp"
-        android:textStyle="bold" />
 
     <EditText
         android:layout_width="380dp"
