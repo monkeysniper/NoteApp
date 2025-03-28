@@ -5,7 +5,10 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.navigation.fragment.findNavController
 import androidx.viewpager2.widget.ViewPager2
+import com.example.hw_3_2.R
 import com.example.hw_3_2.adapter.onBoardPageApdapter
 import com.example.hw_3_2.databinding.FragmentOnBoardBinding
 
@@ -14,10 +17,17 @@ class onBoardFragment : Fragment() {
     private lateinit var binding: FragmentOnBoardBinding
 
     override fun onCreateView(
-        inflater: LayoutInflater,
-        container: ViewGroup?,
+        inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View {
+    ): ConstraintLayout? {
+        val sharedPref = requireActivity().getSharedPreferences("onBoardPrefs", 0)
+        val isCompleted = sharedPref.getBoolean("isOnBoardingCompleted", false)
+
+        if (isCompleted) {
+            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+            return null
+        }
+
         binding = FragmentOnBoardBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -26,6 +36,15 @@ class onBoardFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
         initialize()
         setupListener()
+        binding.btnStart.setOnClickListener {
+            savedOnBoardingCompleted()
+            findNavController().navigate(R.id.action_onBoardFragment_to_noteFragment)
+        }
+    }
+
+    private fun savedOnBoardingCompleted() {
+        val sharedPref = requireActivity().getSharedPreferences("onBoardPrefs", 0)
+        sharedPref.edit().putBoolean("isOnBoardingCompleted", true).apply()
     }
 
     private fun initialize() {
