@@ -1,6 +1,7 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("kotlin-kapt")
 }
 
 android {
@@ -33,13 +34,20 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
+    kapt {
+        correctErrorTypes = true
+    }
     viewBinding{
         enable=true
     }
 }
 
 dependencies {
+    val room_version = "2.6.1"
 
+    implementation("androidx.room:room-runtime:$room_version")
+    kapt("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
     implementation(libs.lottie)
     val nav_version = "2.8.9"
     implementation("androidx.navigation:navigation-fragment:$nav_version")
