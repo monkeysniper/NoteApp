@@ -1,6 +1,8 @@
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
+    id("com.google.devtools.ksp")
+    id("androidx.navigation.safeargs.kotlin")
 }
 
 android {
@@ -33,12 +35,15 @@ android {
     kotlinOptions {
         jvmTarget = "11"
     }
-    viewBinding{
-        enable=true
+    viewBinding {
+        enable = true
     }
 }
 
 dependencies {
+    val room_version = "2.6.1"
+    ksp("androidx.room:room-compiler:$room_version")
+    implementation("androidx.room:room-ktx:$room_version")
 
     implementation(libs.lottie)
     val nav_version = "2.8.9"
